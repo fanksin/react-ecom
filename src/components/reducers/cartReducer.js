@@ -214,11 +214,11 @@ const cartReducer = (state = initState, action) => {
       addedItem.quantity += 1
       return {
         ...state,
-        total: state.total + addedItem.price,
+        total: state.total + addedItem.sale_price,
       }
     } else {
       addedItem.quantity = 1
-      let newTotal = state.total + addedItem.price
+      let newTotal = state.total + addedItem.sale_price
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
@@ -229,7 +229,7 @@ const cartReducer = (state = initState, action) => {
   if (action.type === REMOVE_ITEM) {
     let itemToRemove = state.addedItems.find((item) => action.id === item.id)
     let new_items = state.addedItems.filter((item) => action.id !== item.id)
-    let newTotal = state.total - itemToRemove.price * itemToRemove.quantity
+    let newTotal = state.total - itemToRemove.sale_price * itemToRemove.quantity
     console.log(itemToRemove)
     return {
       ...state,
@@ -240,7 +240,7 @@ const cartReducer = (state = initState, action) => {
   if (action.type === ADD_QUANTITY) {
     let addedItem = state.items.find((item) => item.id === action.id)
     addedItem.quantity += 1
-    let newTotal = state.total + addedItem.price
+    let newTotal = state.total + addedItem.sale_price
     return {
       ...state,
       total: newTotal,
@@ -250,7 +250,7 @@ const cartReducer = (state = initState, action) => {
     let addedItem = state.items.find((item) => item.id === action.id)
     if (addedItem.quantity === 1) {
       let new_items = state.addedItems.filter((item) => item.id !== action.id)
-      let newTotal = state.total - addedItem.price
+      let newTotal = state.total - addedItem.sale_price
       return {
         ...state,
         addedItems: new_items,
@@ -258,7 +258,7 @@ const cartReducer = (state = initState, action) => {
       }
     } else {
       addedItem.quantity -= 1
-      let newTotal = state.total - addedItem.price
+      let newTotal = state.total - addedItem.sale_price
       return {
         ...state,
         total: newTotal,

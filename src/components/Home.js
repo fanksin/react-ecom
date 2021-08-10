@@ -7,6 +7,12 @@ const CardStyles = styled.div`
   max-width: 46%;
   margin: 2%;
 `
+const PriceTagStyles = styled.p`
+  font-weight: bold;
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+`
 class Home extends Component {
   handleClick = (id) => {
     this.props.addToCart(id)
@@ -31,9 +37,7 @@ class Home extends Component {
             </div>
             <div className="card-content">
               <p>{item.desc}</p>
-              <p>
-                <b>Price: {item.sale_price}$</b>
-              </p>
+              <PriceTagStyles>${item.sale_price}</PriceTagStyles>
             </div>
           </div>
         </CardStyles>

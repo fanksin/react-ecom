@@ -1,11 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+const NavStyles = styled.nav`
+  background: #000 !important;
+`
+const ShoppingCartIconStyles = styled.i`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const NavbarRightSideStyles = styled.ul`
+  float: right !important;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`
 const Navbar = () => {
   return (
-    <nav className="nav-wrapper">
+    <NavStyles className="nav-wrapper">
       <div className="container">
         <Link to="/">Serhat's Shop</Link>
-        <ul className="right">
+        <NavbarRightSideStyles>
           <li>
             <Link to="/">Shop</Link>
           </li>
@@ -14,12 +29,14 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/cart">
-              <i className="material-icons">shopping_cart</i>
+              <ShoppingCartIconStyles className="material-icons">
+                shopping_cart
+              </ShoppingCartIconStyles>
             </Link>
           </li>
-        </ul>
+        </NavbarRightSideStyles>
       </div>
-    </nav>
+    </NavStyles>
   )
 }
 export default Navbar
