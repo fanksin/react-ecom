@@ -7,17 +7,15 @@ const CardStyles = styled.div`
   max-width: 46%;
   margin: 2%;
 `
-
 class Home extends Component {
   handleClick = (id) => {
     this.props.addToCart(id)
   }
-
   render() {
     let itemList = this.props.items.map((item) => {
       return (
-        <CardStyles>
-          <div className="card" key={item.id}>
+        <CardStyles key={item.id}>
+          <div className="card">
             <div className="card-image">
               <img src={item.image} alt={item.title} />
               <span className="card-title">{item.title}</span>
